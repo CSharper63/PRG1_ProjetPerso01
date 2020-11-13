@@ -1,7 +1,3 @@
-//
-// Created by Maxime on 12.11.2020.
-//
-
 #ifndef PRG1_PROJETPERSO01_COMPAREARRAYS_H
 #define PRG1_PROJETPERSO01_COMPAREARRAYS_H
 
@@ -13,7 +9,7 @@
  * @param size1 : taille en int du second tableau
  * @return valeur booléenne si pareils ou non
  */
-bool compareArrays(int *tab0, int size0, int *tab1, int size1);
+bool compareArrays(int *tab0, unsigned size0, int *tab1, unsigned size1);
 
 /**
  * Cette fonction permet de verifier si une valeur se trouve dans un tableau
@@ -22,6 +18,6 @@ bool compareArrays(int *tab0, int size0, int *tab1, int size1);
  * @param value : valeur à vérifier dans le tableau
  * @return valeur booléenne si existante ou non
  */
-bool checkValueIn(int *tab, int size, int value);
+bool checkValueIn(int *tab, unsigned size, int value);
 
 #endif //PRG1_PROJETPERSO01_COMPAREARRAYS_H

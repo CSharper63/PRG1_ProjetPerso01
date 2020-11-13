@@ -1,10 +1,6 @@
-//
-// Created by Maxime on 12.11.2020.
-//
-
 #include "cyclicShift.h"
 
-void cyclicShift(int *tab, int size) {
+void cyclicShift(int *tab, unsigned size) {
     if (!size) return;
     const int LAST_POS = tab[size - 1];
     int i = size - 1;

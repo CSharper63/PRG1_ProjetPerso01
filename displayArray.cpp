@@ -1,13 +1,9 @@
-//
-// Created by Maxime on 12.11.2020.
-//
-
 #include "displayArray.h"
 #include <iostream>
 
 using namespace std;
 
-void displayArray(int *tab, int size) {
+void displayArray(int *tab, unsigned size) {
     int i = 0;
     string myString = "";
     if (!size) {

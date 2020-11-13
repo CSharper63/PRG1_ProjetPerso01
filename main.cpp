@@ -16,7 +16,7 @@ Compilateur :
 
 #include <cstdlib>
 #include <iostream>
-
+#include <map>
 //include des fonctions
 #include "displayArray.h"
 #include "replacePairByValue.h"
@@ -28,15 +28,59 @@ using namespace std;
 
 int main() {
 
-    int t0[] = {},
-        t1[] = {0},
-        tabSize0 = sizeof(t0) / sizeof(int),
-        tabSize1 = sizeof(t1) / sizeof(int);
-    //displayArray(t0, tabSize0);gitk
-    //replacePairByValue(t0, tabSize0, 0);
-    //cyclicShift(t0, tabSize);
-    //deleteTab(t0, tabSize0, 956);
-    cout << compareArrays(t0, tabSize0, t1, tabSize1);
+    const int NUMBER_OF_ARRAY = 5;
+
+    int t0[] = {0, 1, 2, 3, 3, 2, 1, 3, 8, 9},
+        t1[] = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18},
+        t2[] = {0, 1, 2, 3, 0, 2, 1, 3, 8, 9},
+        t3[] = {123, 3, 543, 3, 768, 986, 3, 546, 3, 132},
+        t4[] = {84, 3, 12, 3, 89, 67, 3, 3, 34, 3};
+
+    map<int, int (*)> listOfArray{
+            {0, t0},
+            {1, t1},
+            {2, t2},
+            {3, t3},
+            {4, t4},
+    };
+
+    map<int, unsigned> listOfSizeArray{
+            {0, (sizeof(t0) / sizeof(int))},
+            {1, (sizeof(t1) / sizeof(int))},
+            {2, (sizeof(t2) / sizeof(int))},
+            {3, (sizeof(t3) / sizeof(int))},
+            {4, (sizeof(t4) / sizeof(int))},
+    };
+
+    for (int i = 0; i < NUMBER_OF_ARRAY - 1; ++i) {
+        cout << "+--------------- Tableau "<< i <<" -----------------+" << endl;
+        cout << "Décalage cyclique du tableau " << i << " : " << endl;
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        cyclicShift(listOfArray.at(i), listOfSizeArray.at(i));
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        cout << endl;
+
+        cout << "Suppression d'une valeur dans le tableau " << i << " : " << endl;
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        deleteValueInArray(listOfArray.at(i), (unsigned int &) listOfSizeArray.at(i), 3);
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        cout << endl;
+
+        cout << "Remplacement de tous les pairs par une valeur " << i << " : " << endl;
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        replacePairByValue(listOfArray.at(i), listOfSizeArray.at(i), 3);
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        cout << endl;
+
+        //pour chaque tableau comparaison avec les autres
+        for (int j = 0; j < NUMBER_OF_ARRAY - 1; ++j) {
+            //Comparaison de deux tableaux
+            cout << "Comparaison des deux tableaux " << i << " et " << (j) << " :" << endl;
+            cout << (compareArrays(listOfArray.at(i), listOfSizeArray.at(i), listOfArray.at(j),listOfSizeArray.at(j)) ? "Les tableaux sont égaux.": "Les tableaux ne sont pas égaux.") << endl;
+            cout << endl;
+        }
+    }
+
     return EXIT_SUCCESS;
 }
 
