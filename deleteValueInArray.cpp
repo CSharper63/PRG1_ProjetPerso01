@@ -1,6 +1,7 @@
 #include "deleteValueInArray.h"
 
 void deleteValueInArray(int *tab, unsigned& size, const int &valueToDelete) {
+    if (!size)return;
     int i = 0;
     while (i < size) {
         if (tab[i] == valueToDelete) {

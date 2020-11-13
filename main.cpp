@@ -28,13 +28,16 @@ using namespace std;
 
 int main() {
 
-    const int NUMBER_OF_ARRAY = 5;
+    const int NUMBER_OF_ARRAY = 5,
+        VALUE_TO_DELETE = 2,
+        VALUE_TO_REPLACE_PAIRS = 187;
 
-    int t0[] = {0, 1, 2, 3, 3, 2, 1, 3, 8, 9},
-        t1[] = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18},
-        t2[] = {0, 1, 2, 3, 0, 2, 1, 3, 8, 9},
-        t3[] = {123, 3, 543, 3, 768, 986, 3, 546, 3, 132},
-        t4[] = {84, 3, 12, 3, 89, 67, 3, 3, 34, 3};
+    int t0[] = {1, 2, 2, 2, 0, 0, 0, 0},
+        t1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14},
+        t2[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14,2,1,3,4,5,6},
+        t3[] = {123, 3, 543, 3, 768, 986, 3, 546, 3, 132, 54, 2, 56, 88, 7, 8, 76, 3, 3, 2, 2},
+        t4[] = {},
+        t5[] = {};
 
     map<int, int (*)> listOfArray{
             {0, t0},
@@ -52,33 +55,35 @@ int main() {
             {4, (sizeof(t4) / sizeof(int))},
     };
 
-    for (int i = 0; i < NUMBER_OF_ARRAY - 1; ++i) {
+    for (int i = 0; i < NUMBER_OF_ARRAY; ++i) {
         cout << "+--------------- Tableau "<< i <<" -----------------+" << endl;
-        cout << "Décalage cyclique du tableau " << i << " : " << endl;
+        //pour chaque tableau comparaison avec les autres
+        //j'ai mis cette fonction au debut car si je la mets apres les resulats seront fausses car les tableaux sont modifies dans autres fonctions
+        cout << "Comparaison de tableaux : " << endl;
+        for (int j = 0; j < NUMBER_OF_ARRAY; ++j) {
+            //Comparaison de deux tableaux
+            cout << "- tableaux " << i << " et " << (j) << " :" << endl;
+            cout << (compareArrays(listOfArray.at(i), listOfSizeArray.at(i), listOfArray.at(j),listOfSizeArray.at(j)) ? "Les tableaux sont egaux.": "Les tableaux ne sont pas egaux.") << endl;
+            cout << endl;
+        }
+
+        cout << "Decalage cyclique du tableau " << i << " : " << endl;
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         cyclicShift(listOfArray.at(i), listOfSizeArray.at(i));
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         cout << endl;
 
-        cout << "Suppression d'une valeur dans le tableau " << i << " : " << endl;
+        cout << "Suppression d'une valeur dans le tableau : " << endl;
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
-        deleteValueInArray(listOfArray.at(i), (unsigned int &) listOfSizeArray.at(i), 3);
-        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
-        cout << endl;
-
-        cout << "Remplacement de tous les pairs par une valeur " << i << " : " << endl;
-        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
-        replacePairByValue(listOfArray.at(i), listOfSizeArray.at(i), 3);
+        deleteValueInArray(listOfArray.at(i), (unsigned int &) listOfSizeArray.at(i), VALUE_TO_DELETE);
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         cout << endl;
 
-        //pour chaque tableau comparaison avec les autres
-        for (int j = 0; j < NUMBER_OF_ARRAY - 1; ++j) {
-            //Comparaison de deux tableaux
-            cout << "Comparaison des deux tableaux " << i << " et " << (j) << " :" << endl;
-            cout << (compareArrays(listOfArray.at(i), listOfSizeArray.at(i), listOfArray.at(j),listOfSizeArray.at(j)) ? "Les tableaux sont égaux.": "Les tableaux ne sont pas égaux.") << endl;
-            cout << endl;
-        }
+        cout << "Remplacement de tous les pairs par une valeur : " << endl;
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        replacePairByValue(listOfArray.at(i), listOfSizeArray.at(i), VALUE_TO_REPLACE_PAIRS);
+        displayArray(listOfArray.at(i), listOfSizeArray.at(i));
+        cout << endl;
     }
 
     return EXIT_SUCCESS;
