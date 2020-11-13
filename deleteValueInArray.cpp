@@ -1,13 +1,13 @@
 #include "deleteValueInArray.h"
 
-void deleteValueInArray(int *tab, unsigned& size, const int &valueToDelete) {
+void deleteValueInArray(int *array, unsigned& size, const int &value) {
     if (!size)return;
     int i = 0;
     while (i < size) {
-        if (tab[i] == valueToDelete) {
+        if (array[i] == value) {
             //boucle sur le tableau pour supprimer toutes les valeurs correspondantes à valueToDelete
             for (int j = i + 1; j < size; j++) {
-                tab[j - 1] = tab[j];
+                array[j - 1] = array[j];
             }
             i-- and size--;
         }

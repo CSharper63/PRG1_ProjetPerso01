@@ -38,7 +38,7 @@ int main() {
         t3[] = {123, 3, 543, 3, 768, 986, 3, 546, 3, 132, 54, 2, 56, 88, 7, 8, 76, 3, 3, 2, 2},
         t4[] = {},
         t5[] = {};
-
+    //map contenant tous les tableaux
     map<int, int (*)> listOfArray{
             {0, t0},
             {1, t1},
@@ -46,7 +46,7 @@ int main() {
             {3, t3},
             {4, t4},
     };
-
+    //map contenant la taille de chaque tableau
     map<int, unsigned> listOfSizeArray{
             {0, (sizeof(t0) / sizeof(int))},
             {1, (sizeof(t1) / sizeof(int))},
@@ -58,11 +58,11 @@ int main() {
     for (int i = 0; i < NUMBER_OF_ARRAY; ++i) {
         cout << "+--------------- Tableau "<< i <<" -----------------+" << endl;
         //pour chaque tableau comparaison avec les autres
-        //j'ai mis cette fonction au debut car si je la mets apres les resulats seront fausses car les tableaux sont modifies dans autres fonctions
+        //j'ai mis cette fonction au debut car si je la mets apres les resulats seront fausses car les tableaux sont modifies dans autres fonctions (c'est comme s'ils étaient passes par ref)
         cout << "Comparaison de tableaux : " << endl;
-        for (int j = 0; j < NUMBER_OF_ARRAY; ++j) {
+        for (int j = 0; j < NUMBER_OF_ARRAY; ++j) { //boucle permettant d'iterer sur le nombre total de tableau pour comparer le tableau actuel (i) avec tous les autres (j)
             //Comparaison de deux tableaux
-            cout << "- tableaux " << i << " et " << (j) << " :" << endl;
+            cout << "- tableaux " << i << " et " << j << " :" << endl;
             cout << (compareArrays(listOfArray.at(i), listOfSizeArray.at(i), listOfArray.at(j),listOfSizeArray.at(j)) ? "Les tableaux sont egaux.": "Les tableaux ne sont pas egaux.") << endl;
             cout << endl;
         }

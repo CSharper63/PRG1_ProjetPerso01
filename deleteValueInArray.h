@@ -3,10 +3,10 @@
 
 /**
  * Cette fonction supprime tous les éléments correspondant à la valeur passée en paramètre
- * @param tab : tableau en int
+ * @param array : tableau en int
  * @param size : taille du tableau en int
- * @param valueToDelete : valeur à supprimer
+ * @param value : valeur à supprimer
  */
-void deleteValueInArray(int *tab, unsigned& size, const int &valueToDelete);
+void deleteValueInArray(int *array, unsigned& size, const int &value);
 
 #endif //PRG1_PROJETPERSO01_DELETEVALUEINARRAY_H
