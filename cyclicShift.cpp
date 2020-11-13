@@ -1,14 +1,14 @@
 #include "cyclicShift.h"
 
-void cyclicShift(int *tab, unsigned size) {
+void cyclicShift(int *array, unsigned size) {
     if (!size) return;
-    const int LAST_POS = tab[size - 1];
-    int i = size - 1;
+    const int LAST_POS = array[size - 1];
+    unsigned i = size - 1;
     //décalage de chaque élément du tableau
     while (i > 0) {
-        tab[i] = tab[i - 1];
+        array[i] = array[i - 1];
         i--;
     }
     //remplace la première valeur du tableau par la dernière
-    tab[0] = LAST_POS;
+    array[0] = LAST_POS;
 }
