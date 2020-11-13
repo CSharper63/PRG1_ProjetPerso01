@@ -36,8 +36,7 @@ int main() {
         t1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14},
         t2[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14, 14, 14, 14, 14,2,1,3,4,5,6},
         t3[] = {123, 3, 543, 3, 768, 986, 3, 546, 3, 132, 54, 2, 56, 88, 7, 8, 76, 3, 3, 2, 2},
-        t4[] = {},
-        t5[] = {};
+        t4[] = {};
     //map contenant tous les tableaux
     map<int, int (*)> listOfArray{
             {0, t0},
@@ -55,6 +54,7 @@ int main() {
             {4, (sizeof(t4) / sizeof(int))},
     };
 
+    //boucle permettant de tester toutes les fonctions sur tous les tabelaux
     for (int i = 0; i < NUMBER_OF_ARRAY; ++i) {
         cout << "+--------------- Tableau "<< i <<" -----------------+" << endl;
         //pour chaque tableau comparaison avec les autres
@@ -73,13 +73,13 @@ int main() {
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         cout << endl;
 
-        cout << "Suppression d'une valeur dans le tableau : " << endl;
+        cout << "Suppression de la valeur " << VALUE_TO_DELETE << " dans le tableau : " << endl;
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         deleteValueInArray(listOfArray.at(i), (unsigned int &) listOfSizeArray.at(i), VALUE_TO_DELETE);
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         cout << endl;
 
-        cout << "Remplacement de tous les pairs par une valeur : " << endl;
+        cout << "Remplacement de tous les pairs par la valeur " << VALUE_TO_REPLACE_PAIRS << " : " << endl;
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
         replacePairByValue(listOfArray.at(i), listOfSizeArray.at(i), VALUE_TO_REPLACE_PAIRS);
         displayArray(listOfArray.at(i), listOfSizeArray.at(i));
