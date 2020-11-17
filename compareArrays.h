@@ -20,4 +20,14 @@ bool compareArrays(int *array0, unsigned size0, int *array1, unsigned size1);
  */
 bool checkValueIn(const int *array, unsigned size, int value);
 
+/**
+ * Cette fonction vérifie si un tableau est inclu dans l'autre
+ * @param array0 premier tableau en int
+ * @param size0 taille du premier tableau en int
+ * @param array1 second tableau en int
+ * @param size1 taille du second tableau en int
+ * @return valeur booléenne si inclu ou non
+ */
+bool checkArrayInOtherOne(int *array0, unsigned size0, int *array1, unsigned size1);
+
 #endif //PRG1_PROJETPERSO01_COMPAREARRAYS_H
